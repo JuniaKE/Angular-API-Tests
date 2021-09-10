@@ -1,0 +1,22 @@
+<div class="container">​
+    <br/>​
+    <div class="row justify-content-center">​
+        <div class="col-12 col-md-10 col-lg-8">​
+            <form class="card-sm">​
+                <div class="card-body row no-gutters align-items-center">​
+                    <div class="col">​
+                        <input class="form-control form-control-md form-control-borderless" name="searchKeyword" type="search" placeholder="Search keyword" [(ngModel)]="searchKeyword">​
+                    </div>​
+                    <div class="col-auto">​
+                        <button class="btn btn-md btn-success" (click)="searchImage()">Search Images</button>​
+                    </div>​
+                </div>​
+            </form>​
+        </div>​
+    </div>
+    <div class="row">
+        <div class="column" *ngFor="let photo of data">
+            <img [src]="photo.urls.regular">​
+        </div>
+    </div>
+</div>​

@@ -6,18 +6,29 @@ import { AppComponent } from './app.component';
 import { CoursesComponent } from './components/courses/courses.component';
 import { DataService } from './services/data.service';
 import { LogoComponent } from './components/logo/logo.component';
-
+import { FormsModule } from '@angular/forms';
+import { LoginComponent } from './components/login/login.component';
+import { HttpClientModule } from '@angular/common/http';
+import { PostsComponent } from './components/posts/posts.component';
+import { UnsplashComponent } from './components/unsplash/unsplash.component';
 @NgModule({
   declarations: [
     AppComponent,
     CoursesComponent,
-    LogoComponent
+    LogoComponent,
+    LoginComponent,
+    PostsComponent,
+    UnsplashComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule, 
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [DataService],
+  providers: [
+    DataService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,6 +1,28 @@
 <div class="container">
     <h2 class="header">{{ coursesCount }} courses</h2>
-    <ul>
-        <li *ngFor="let course of courses">{{ course }}</li>
+    <ul class="list-group">
+        <li *ngFor="let course of courses;" class="list-group-item;" #course> {{ course }}
+            <button class="btn btn-primary" (click)="deleteCourse(course)"> Delete {{ course }}</button>
+        </li>
     </ul>
+    <form #data="ngForm" (ngSubmit)="addCourse(data)">
+        <div class="form-group">
+            <label for="name">Course</label> <br>
+            <input type="text" class="form-control" name="name" required minlength="2" maxlength="7" ngModel #name="ngModel">
+            <pre></pre>
+            <div class="alert" *ngIf="name.invalid && (name.touched || name.dirty)">
+                <div class="alert alert-danger" *ngIf="name.errors?.required">
+                    * The Course is required field
+                </div>
+                <div class="alert alert-danger" *ngIf="name.errors?.minlength">
+                    * The Lenght of the Course cannot be below 2 characters
+                </div>
+                <div class="alert alert-danger" *ngIf="name.errors?.maxlength">
+                    * The Lenght of the Course cannot be above 7 characters
+                </div>
+            </div>
+        </div>
+        <pre></pre>
+        <button class="btn btn-primary" type="submit"> Add Course</button>
+    </form>
 </div>

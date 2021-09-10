@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
@@ -6,16 +6,21 @@ import { DataService } from 'src/app/services/data.service';
   templateUrl: './courses.component.html',
   styleUrls: ['./courses.component.css']
 })
-export class CoursesComponent implements OnInit {
+export class CoursesComponent {
 
   courses: string[] = [];
   coursesCount = "";
-  constructor(dataService: DataService) {
+  constructor(public dataService: DataService) {
     this.courses = dataService.getCourses();
     this.coursesCount = "3";
    }
 
-  ngOnInit(): void {
+   
+  addCourse(data:any) {
+    this.dataService.addCourse(data.value.name);
+    console.log('Posting ', data.value.name);
   }
-
+  deleteCourse(course: any){
+    this.dataService.deleteCourse(course);
+  }
 }
